@@ -104,124 +104,219 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+Insert all books from Out_of_print_books into Books
+
+Table attributes are ISBN, Title, Author, Publisher, YearPublished
 
 ```sql
--- Paste your SQL code below for Question 1
+INSERT INTO Books (ISBN, Title, Author, Publisher, YearPublished)
+SELECT ISBN, Title, Author, Publisher, YearPublished
+FROM Out_of_print_books;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1242" height="377" alt="image" src="https://github.com/user-attachments/assets/ee9070f2-6924-4a79-8304-8f37d30e9aff" />
+
+<img width="1227" height="377" alt="image" src="https://github.com/user-attachments/assets/299a844d-f1cc-4213-99c6-b57c81d3309d" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
 
 ```sql
--- Paste your SQL code below for Question 2
+INSERT INTO Products (Name, Category, Price, Stock)
+VALUES 
+('Smartphone', 'Electronics', 800, 150),
+('Headphones', 'Accessories', 200, 300);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1236" height="442" alt="image" src="https://github.com/user-attachments/assets/5d8f5efb-ed1d-4ad7-962e-c740d530abda" />
+
+<img width="883" height="451" alt="image" src="https://github.com/user-attachments/assets/0b8cf9e7-6962-4423-a4c0-a19d930214b3" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Orders with the following columns:
+
+OrderID as INTEGER
+OrderDate as TEXT
+CustomerID as INTEGER
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Orders (
+    OrderID INTEGER,
+    OrderDate TEXT,
+    CustomerID INTEGER
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1242" height="407" alt="image" src="https://github.com/user-attachments/assets/1bbdf9d6-9a03-42f3-a03d-035b9c754255" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
+
+CustomerID  Name          Address
+----------  ------------  ----------
+304         Peter Parker  Spider St      
+
+Note: The City and ZipCode columns will use their default values.
 
 ```sql
--- Paste your SQL code below for Question 4
+INSERT INTO Customers (CustomerID, Name, Address)
+VALUES (304, 'Peter Parker', 'Spider St');
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1235" height="403" alt="image" src="https://github.com/user-attachments/assets/55b86059-4e27-4f7b-8ea2-ec79ccfaa188" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE Orders (
+    OrderID INTEGER PRIMARY KEY,
+    OrderDate DATE NOT NULL,
+    CustomerID INTEGER,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1242" height="365" alt="image" src="https://github.com/user-attachments/assets/d39fd3a9-18dd-44d2-9ff4-5dac73730b49" />
+
+<img width="1236" height="357" alt="image" src="https://github.com/user-attachments/assets/3a94b44a-c3f1-4d05-bc67-e7b39dc7ac84" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a table named Products with the following constraints:
+
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price is of real datatype and should be greater than 0.
+Stock is of integer datatype and should be greater than or equal to 0.
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE Products (
+    ProductID INTEGER PRIMARY KEY,
+    ProductName TEXT NOT NULL,
+    Price REAL CHECK (Price > 0),
+    Stock INTEGER CHECK (Stock >= 0)
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1238" height="408" alt="image" src="https://github.com/user-attachments/assets/d10063a6-2ea2-4b0e-8a28-f15e33666301" />
+
+<img width="1233" height="397" alt="image" src="https://github.com/user-attachments/assets/61a51d8a-f1bd-42f5-acf2-162da2896399" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
 ```sql
--- Paste your SQL code below for Question 7
+ALTER TABLE employee ADD COLUMN department_id INTEGER;
+ALTER TABLE employee ADD COLUMN manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
+<img width="1237" height="372" alt="image" src="https://github.com/user-attachments/assets/03eeec10-ef7e-4510-ab60-f2738fd4f227" />
 
-![Output7](output.png)
+
+<img width="1235" height="407" alt="Screenshot 2026-05-20 102600" src="https://github.com/user-attachments/assets/c41928cc-cb4f-4a05-bf79-de9dc52f0910" />
+
 
 **Question 8**
----
--- Paste Question 8 here
+---Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
 
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Department (
+    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentName TEXT UNIQUE NOT NULL,
+    Location TEXT
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+
+<img width="1226" height="367" alt="image" src="https://github.com/user-attachments/assets/69005597-ab92-4019-b56b-b49ac061d924" />
+
+
+<img width="1240" height="367" alt="image" src="https://github.com/user-attachments/assets/7fc7bbef-c0da-433b-b0d1-5f9b4b0c82c6" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Invoices with the following constraints:
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+Amount as REAL should be greater than 0.
+DueDate as DATE should be greater than the InvoiceDate.
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Invoices (
+    InvoiceID INTEGER PRIMARY KEY,
+    InvoiceDate DATE,
+    Amount REAL CHECK (Amount > 0),
+    DueDate DATE CHECK (DueDate > InvoiceDate),
+    OrderID INTEGER,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+
+<img width="1237" height="455" alt="image" src="https://github.com/user-attachments/assets/330f700d-b649-4765-95cc-55e47a8d691f" />
+
+
+<img width="1236" height="451" alt="image" src="https://github.com/user-attachments/assets/8afebb38-5e26-4a02-a95b-71cb324c7bdd" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to add a column named Date_of_birth as Date in the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 10
+ALTER TABLE Student_details
+ADD COLUMN Date_of_birth Date;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1232" height="453" alt="image" src="https://github.com/user-attachments/assets/66f7934f-47fa-4267-adc3-f0c5afda492e" />
+
+<img width="1230" height="450" alt="image" src="https://github.com/user-attachments/assets/a1a264b5-6b22-47d5-8659-a40ae98016b2" />
+
+## SCREENSHOT OF MODULE 1 SEB COMPLETION GRADE
+
+
+<img width="825" height="138" alt="image" src="https://github.com/user-attachments/assets/dcaaadd2-5879-4c87-9990-bfc5478953a3" />
 
 
 ## RESULT
