@@ -1,162 +1,177 @@
-# Experiment 8: PL/SQL Cursor Programs
+# Experiment 6: Joins
 
 ## AIM
-To write and execute PL/SQL programs using cursors and exception handling to manage runtime errors effectively and display appropriate messages.
+To study and implement different types of joins.
 
 ## THEORY
 
-In PL/SQL, cursors are used to handle query result sets row-by-row. 
+SQL Joins are used to combine records from two or more tables based on a related column.
 
-There are two types of cursors:
-
-- Implicit Cursors: Automatically created by PL/SQL for single-row queries.
-- Explicit Cursors: Declared and controlled by the programmer for multi-row queries.
-
-Types of Explicit Cursors:
-
-1. Simple Cursor: Basic cursor to iterate over multiple rows.
-
-2. Parameterized Cursor: Accepts parameters to filter the result dynamically.
-
-3. Cursor FOR Loop: Simplifies cursor operations (open, fetch, close).
-
-4. %ROWTYPE Cursor: Fetches entire row into a record using %ROWTYPE.
-
-5. Cursor with FOR UPDATE: Used for row-level locking and updating the rows while looping.
+### 1. INNER JOIN
+Returns records with matching values in both tables.
 
 **Syntax:**
 ```sql
-DECLARE 
-   <declarations section> 
-BEGIN 
-   <executable command(s)>
-EXCEPTION 
-   <exception handling> 
-END;
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column = table2.column;
 ```
 
-### Basic Components of PL/SQL Block:
+### 2. LEFT JOIN
+Returns all records from the left table, and matched records from the right.
 
-- DECLARE: Section to declare variables and constants.
-- BEGIN: The execution section that contains PL/SQL statements.
-- EXCEPTION: Handles errors or exceptions that occur in the program.
-- END: Marks the end of the PL/SQL block.
-
-**Exception Handling**
-
-PL/SQL provides a robust mechanism to handle runtime errors using exception handling blocks. When an error occurs during execution, control is passed to the EXCEPTION section, where specific or general errors can be handled gracefully.
-
-### Components of Exception Handling:
-- Predefined Exceptions: Automatically raised by PL/SQL for common errors (e.g., NO_DATA_FOUND, TOO_MANY_ROWS, ZERO_DIVIDE).
-- User-defined Exceptions: Declared explicitly in the declaration section using the EXCEPTION keyword.
-- WHEN OTHERS: A generic handler for all exceptions not handled explicitly.
+**Syntax:**
 
 ```sql
-BEGIN
-   -- Statements
-EXCEPTION
-   WHEN exception_name THEN
-      -- Handling code
-   WHEN OTHERS THEN
-      -- Handling for unknown errors
-END;
+SELECT columns
+FROM table1
+LEFT JOIN table2
+ON table1.column = table2.column;
+```
+### 3. RIGHT JOIN
+Returns all records from the right table, and matched records from the left.
+
+**Syntax:**
+
+```sql
+SELECT columns
+FROM table1
+RIGHT JOIN table2
+ON table1.column = table2.column;
+```
+### 4. FULL OUTER JOIN
+Returns all records when there is a match in either left or right table.
+
+**Syntax:**
+
+```sql
+SELECT columns
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column = table2.column;
 ```
 
-### **Question 1: Simple Cursor with Exception Handling**
+**Question 1**
+--
+-- Paste Question 1 here
 
-**Write a PL/SQL program using a simple cursor to fetch employee names and designations from the `employees` table. Implement exception handling for the following cases:**
+```sql
+-- Paste your SQL code below for Question 1
+```
 
-1. **NO_DATA_FOUND**: When no rows are fetched.
-2. **OTHERS**: Any other unexpected errors during execution.
+**Output:**
 
-**Steps:**
+![Output1](output.png)
 
-- Create an `employees` table with fields `emp_id`, `emp_name`, and `designation`.
-- Insert some sample data into the table.
-- Use a simple cursor to fetch and display employee names and designations.
-- Implement exception handling to catch the relevant exceptions and display appropriate messages.
-
-**Output:**  
-The program should display the employee details or an error message.
-
+**Question 2**
 ---
+-- Paste Question 2 here
 
-### **Question 2: Parameterized Cursor with Exception Handling**
+```sql
+-- Paste your SQL code below for Question 2
+```
 
-**Write a PL/SQL program using a parameterized cursor to retrieve and display employees with a salary in a given range. Implement exception handling for the following errors:**
+**Output:**
 
-1. **NO_DATA_FOUND**: When no employees meet the salary criteria.
-2. **OTHERS**: For any unexpected errors during the execution.
+![Output2](output.png)
 
-**Steps:**
-
-- Modify the `employees` table by adding a `salary` column.
-- Insert sample salary values for the employees.
-- Use a parameterized cursor to accept a salary range as input and fetch employees within that range.
-- Implement exception handling to catch and display relevant error messages.
-
-**Output:**  
-The program should display the employee details within the specified salary range or an error message if no data is found.
-
+**Question 3**
 ---
+-- Paste Question 3 here
 
-### **Question 3: Cursor FOR Loop with Exception Handling**
+```sql
+-- Paste your SQL code below for Question 3
+```
 
-**Write a PL/SQL program using a cursor FOR loop to retrieve and display all employee names and their department numbers from the `employees` table. Implement exception handling for the following cases:**
+**Output:**
 
-1. **NO_DATA_FOUND**: If no employees are found in the database.
-2. **OTHERS**: For any other unexpected errors.
+![Output3](output.png)
 
-**Steps:**
-
-- Modify the `employees` table by adding a `dept_no` column.
-- Insert sample department numbers for employees.
-- Use a cursor FOR loop to fetch and display employee names along with their department numbers.
-- Implement exception handling to catch the relevant exceptions.
-
-**Output:**  
-The program should display employee names with their department numbers or the appropriate error message if no data is found.
-
+**Question 4**
 ---
+-- Paste Question 4 here
 
-### **Question 4: Cursor with `%ROWTYPE` and Exception Handling**
+```sql
+-- Paste your SQL code below for Question 4
+```
 
-**Write a PL/SQL program that uses a cursor with `%ROWTYPE` to fetch and display complete employee records (emp_id, emp_name, designation, salary). Implement exception handling for the following errors:**
+**Output:**
 
-1. **NO_DATA_FOUND**: When no employees are found in the database.
-2. **OTHERS**: For any other errors that occur.
+![Output4](output.png)
 
-**Steps:**
-
-- Modify the `employees` table by adding `emp_id`, `emp_name`, `designation`, and `salary` fields.
-- Insert sample data into the `employees` table.
-- Declare a cursor using `%ROWTYPE` to fetch complete rows from the `employees` table.
-- Implement exception handling to catch the relevant exceptions and display appropriate messages.
-
-**Output:**  
-The program should display employee records or the appropriate error message if no data is found.
-
+**Question 5**
 ---
+-- Paste Question 5 here
 
-### **Question 5: Cursor with FOR UPDATE Clause and Exception Handling**
+```sql
+-- Paste your SQL code below for Question 5
+```
 
-**Write a PL/SQL program using a cursor with the `FOR UPDATE` clause to update the salary of employees in a specific department. Implement exception handling for the following cases:**
+**Output:**
 
-1. **NO_DATA_FOUND**: If no rows are affected by the update.
-2. **OTHERS**: For any unexpected errors during execution.
+![Output5](output.png)
 
-**Steps:**
-
-- Modify the `employees` table to include a `dept_no` and `salary` field.
-- Insert sample data into the `employees` table with different department numbers.
-- Use a cursor with the `FOR UPDATE` clause to lock the rows of employees in a specific department and update their salary.
-- Implement exception handling to handle `NO_DATA_FOUND` or other errors that may occur.
-
-**Output:**  
-The program should update employee salaries and display a message, or it should display an error message if no data is found.
-
+**Question 6**
 ---
+-- Paste Question 6 here
+
+```sql
+-- Paste your SQL code below for Question 6
+```
+
+**Output:**
+
+![Output6](output.png)
+
+**Question 7**
+---
+-- Paste Question 7 here
+
+```sql
+-- Paste your SQL code below for Question 7
+```
+
+**Output:**
+
+![Output7](output.png)
+
+**Question 8**
+---
+-- Paste Question 8 here
+
+```sql
+-- Paste your SQL code below for Question 8
+```
+
+**Output:**
+
+![Output8](output.png)
+
+**Question 9**
+---
+-- Paste Question 9 here
+
+```sql
+-- Paste your SQL code below for Question 9
+```
+
+**Output:**
+
+![Output9](output.png)
+
+**Question 10**
+---
+-- Paste Question 10 here
+
+```sql
+-- Paste your SQL code below for Question 10
+```
+
+**Output:**
+
+![Output10](output.png)
+
 
 ## RESULT
-Thus, the program successfully executed and displayed employee details using a cursor. 
-
+Thus, the SQL queries to implement different types of joins have been executed successfully.
